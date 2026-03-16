@@ -1,21 +1,17 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
 import { formatCurrency, formatNumber } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { useQuery } from '@tanstack/react-query';
 
 export default function PortfolioPage() {
-  const [portfolio, setPortfolio] = useState<{ assets: any[], totalValue: number } | null>(null);
+  const { data: portfolio, isLoading } = useQuery({
+    queryKey: ['portfolio'],
+    queryFn: () => fetch('/api/portfolio').then(res => res.json())
+  });
 
-  useEffect(() => {
-    fetch('/api/portfolio')
-      .then(res => res.json())
-      .then(data => setPortfolio(data));
-  }, []);
-
-  if (!portfolio) {
+  if (isLoading) {
     return <div className="text-center p-12 animate-pulse text-slate-400">Loading multi-chain portfolio...</div>;
   }
 
@@ -47,7 +43,7 @@ export default function PortfolioPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5 text-slate-200">
-                {portfolio.assets.map((asset, i) => (
+                {portfolio.assets.map((asset: any, i: number) => (
                   <tr key={i} className="hover:bg-white/5 transition-colors cursor-pointer group">
                     <td className="py-4 px-4">
                       <div className="flex items-center gap-3">

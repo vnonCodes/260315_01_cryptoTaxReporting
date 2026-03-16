@@ -1,23 +1,39 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { Download, FileText, FileJson } from 'lucide-react';
+import { Download } from 'lucide-react';
 import { formatCurrency, formatNumber } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { useQuery } from '@tanstack/react-query';
 
 export default function ReportsPage() {
-  const [report, setReport] = useState<any>(null);
   const [year, setYear] = useState('2024');
 
-  useEffect(() => {
-    fetch(`/api/tax-report?year=${year}`)
-      .then(res => res.json())
-      .then(data => setReport(data));
-  }, [year]);
+  const { data: report, isLoading } = useQuery({
+    queryKey: ['tax-report', year],
+    queryFn: () => fetch(`/api/tax-report?year=${year}`).then(res => res.json())
+  });
 
-  if (!report) {
+  const exportCSV = () => {
+    if (!report || !report.events) return;
+    const { events } = report;
+    const headers = ['Description,Date,Proceeds (USD),Cost Basis (USD),Gain/Loss (USD),Term'];
+    const rows = events.map((e: any) => 
+      `${e.amountSold} ${e.asset},${new Date(e.timestamp).toLocaleDateString()},${e.proceeds.toFixed(2)},${e.costBasis.toFixed(2)},${e.gainLoss.toFixed(2)},${e.term}`
+    );
+    const csvContent = "data:text/csv;charset=utf-8," + headers.concat(rows).join("\n");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `Form_8949_${year}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  if (isLoading || !report) {
     return <div className="text-center p-12 text-slate-400">Compiling your tax events...</div>;
   }
 
@@ -34,14 +50,17 @@ export default function ReportsPage() {
           <select 
             value={year} 
             onChange={(e) => setYear(e.target.value)}
-            className="bg-slate-800 border-white/10 text-white rounded-lg px-4 py-2 focus:ring-1 focus:ring-primary-500"
+            className="bg-slate-800 border-white/10 text-white rounded-lg px-4 py-2 focus:ring-1 focus:ring-primary-500 outline-none"
           >
             <option value="2025">2025</option>
             <option value="2024">2024</option>
             <option value="2023">2023</option>
             <option value="2022">2022</option>
           </select>
-          <button className="flex items-center gap-2 border border-white/10 bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg text-sm text-white">
+          <button 
+            onClick={exportCSV}
+            className="flex items-center gap-2 border border-white/10 bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg text-sm text-white transition-all active:scale-95"
+          >
             <Download className="w-4 h-4" /> Export CSV
           </button>
         </div>

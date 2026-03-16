@@ -1,21 +1,18 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { formatCurrency, formatNumber } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { useQuery } from '@tanstack/react-query';
 
 export default function TransactionsPage() {
-  const [transactions, setTransactions] = useState<any[]>([]);
+  const { data: transactions, isLoading } = useQuery({
+    queryKey: ['transactions'],
+    queryFn: () => fetch('/api/transactions').then(res => res.json())
+  });
 
-  useEffect(() => {
-    fetch('/api/transactions')
-      .then(res => res.json())
-      .then(data => setTransactions(data));
-  }, []);
-
-  if (!transactions.length) {
+  if (isLoading || !transactions) {
     return <div className="text-center p-12 animate-pulse text-slate-400">Loading transactions and calculating tax impact...</div>;
   }
 
@@ -48,7 +45,7 @@ export default function TransactionsPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5 text-slate-200">
-                {transactions.map(tx => {
+                {transactions.map((tx: any) => {
                    const impact = tx.taxImpact;
                    let impactColor = "text-slate-500";
                    let impactText = "None";

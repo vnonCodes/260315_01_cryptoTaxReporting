@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   description: 'Evaluate your portfolio accurately with dependable ready-to-file reports across multi-chain assets and DeFi protocols.',
 };
 
+import { Providers } from './providers';
+
 export default function RootLayout({
   children,
 }: {
@@ -20,15 +22,17 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="antialiased min-h-screen flex bg-slate-900 text-slate-200">
-        <Sidebar />
-        <div className="flex-1 ml-64 flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-1 p-8">
-            <div className="max-w-7xl mx-auto">
-              {children}
-            </div>
-          </main>
-        </div>
+        <Providers>
+          <Sidebar />
+          <div className="flex-1 ml-64 flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-1 p-8">
+              <div className="max-w-7xl mx-auto">
+                {children}
+              </div>
+            </main>
+          </div>
+        </Providers>
       </body>
     </html>
   );

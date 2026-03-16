@@ -1,19 +1,13 @@
-import { Bell, Search, User } from 'lucide-react';
+import { Bell, User } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
+import { CommandPalette } from './CommandPalette';
 
 export function Header() {
   return (
     <header className="h-16 border-b border-white/5 bg-slate-900/50 backdrop-blur-xl sticky top-0 z-50 flex items-center justify-between px-8">
       
       <div className="flex items-center flex-1">
-        <div className="relative w-96 hidden md:block">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-          <input 
-            type="text" 
-            placeholder="Search transactions, assets, or addresses..." 
-            className="w-full bg-slate-800/50 border border-slate-700/50 rounded-full py-1.5 pl-10 pr-4 text-sm text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-all"
-          />
-        </div>
+        <CommandPalette />
       </div>
 
       <div className="flex items-center gap-6">

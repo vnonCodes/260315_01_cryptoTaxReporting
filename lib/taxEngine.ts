@@ -1,6 +1,7 @@
 import { Transaction, TaxEvent, TaxLot } from '../types';
+import { getHistoricalPrice } from './historicalPrices';
 
-export function calculateRealizedGains(transactions: Transaction[], currentPrices: Record<string, number>): TaxEvent[] {
+export function calculateRealizedGains(transactions: Transaction[]): TaxEvent[] {
   const events: TaxEvent[] = [];
   const lots: Record<string, TaxLot[]> = {};
 
@@ -11,14 +12,15 @@ export function calculateRealizedGains(transactions: Transaction[], currentPrice
     const isCryptoSold = tx.assetOut && tx.assetOut !== 'USD' && tx.assetOut !== 'USDC' && tx.assetOut !== 'USDT';
 
     if (tx.type === 'airdrop' && tx.assetIn && tx.amountIn) {
+      const priceAtAirdrop = getHistoricalPrice(tx.assetIn, tx.timestamp);
       events.push({
         transactionId: tx.id,
         timestamp: tx.timestamp,
         asset: tx.assetIn,
         amountSold: tx.amountIn,
-        proceeds: (currentPrices[tx.assetIn] || 1) * tx.amountIn, // Using current price for simplicity instead of historical
+        proceeds: priceAtAirdrop * tx.amountIn,
         costBasis: 0,
-        gainLoss: (currentPrices[tx.assetIn] || 1) * tx.amountIn,
+        gainLoss: priceAtAirdrop * tx.amountIn,
         term: 'income',
         type: 'ordinary_income',
       });
@@ -36,13 +38,15 @@ export function calculateRealizedGains(transactions: Transaction[], currentPrice
 
     if (isCryptoBought && tx.amountIn && tx.assetIn) {
         if (!lots[tx.assetIn]) lots[tx.assetIn] = [];
-        let pricePerUnit = currentPrices[tx.assetIn] || 1; 
+        let pricePerUnit = getHistoricalPrice(tx.assetIn, tx.timestamp);
         
-        // Approximate cost basis
+        // Use execution price if traded against USD/stables
         if (tx.assetOut && (tx.assetOut === 'USD' || tx.assetOut === 'USDC')) {
             pricePerUnit = (tx.amountOut || 0) / tx.amountIn;
-        } else if (tx.assetOut && currentPrices[tx.assetOut]) {
-            pricePerUnit = ((tx.amountOut || 0) * currentPrices[tx.assetOut]) / tx.amountIn;
+        } else if (tx.assetOut) {
+            // Traded against another crypto - use historical price of that crypto at that time
+            const assetOutPrice = getHistoricalPrice(tx.assetOut, tx.timestamp);
+            pricePerUnit = ((tx.amountOut || 0) * assetOutPrice) / tx.amountIn;
         }
 
         lots[tx.assetIn].push({
@@ -58,12 +62,13 @@ export function calculateRealizedGains(transactions: Transaction[], currentPrice
     if (isCryptoSold && tx.amountOut && tx.assetOut) {
         let amountToSell = tx.amountOut;
         let totalCostBasis = 0;
-        let proceedsPerUnit = currentPrices[tx.assetOut] || 1;
+        let proceedsPerUnit = getHistoricalPrice(tx.assetOut, tx.timestamp);
 
         if (tx.assetIn && (tx.assetIn === 'USD' || tx.assetIn === 'USDC')) {
             proceedsPerUnit = (tx.amountIn || 0) / tx.amountOut;
-        } else if (tx.assetIn && currentPrices[tx.assetIn]) {
-            proceedsPerUnit = ((tx.amountIn || 0) * currentPrices[tx.assetIn]) / tx.amountOut;
+        } else if (tx.assetIn) {
+            const assetInPrice = getHistoricalPrice(tx.assetIn, tx.timestamp);
+            proceedsPerUnit = ((tx.amountIn || 0) * assetInPrice) / tx.amountOut;
         }
         
         const totalProceeds = amountToSell * proceedsPerUnit;
@@ -109,7 +114,7 @@ export function calculateRealizedGains(transactions: Transaction[], currentPrice
   return events;
 }
 
-export function generateTaxReport(year: number, transactions: Transaction[], currentPrices: Record<string, number>): TaxEvent[] {
-  const allEvents = calculateRealizedGains(transactions, currentPrices);
+export function generateTaxReport(year: number, transactions: Transaction[]): TaxEvent[] {
+  const allEvents = calculateRealizedGains(transactions);
   return allEvents.filter(e => new Date(e.timestamp).getFullYear() === year);
 }
