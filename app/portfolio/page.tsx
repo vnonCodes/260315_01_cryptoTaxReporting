@@ -43,7 +43,7 @@ export default function PortfolioPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5 text-slate-200">
-                {portfolio.assets.map((asset: Asset, i: number) => (
+                {portfolio.assets.map((asset: any, i: number) => (
                   <tr key={i} className="hover:bg-white/5 transition-colors cursor-pointer group">
                     <td className="py-4 px-4">
                       <div className="flex items-center gap-3">

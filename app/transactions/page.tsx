@@ -45,7 +45,7 @@ export default function TransactionsPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5 text-slate-200">
-                {transactions.map((tx: Transaction) => {
+                {transactions.map((tx: any) => {
                    const impact = tx.taxImpact;
                    let impactColor = "text-slate-500";
                    let impactText = "None";

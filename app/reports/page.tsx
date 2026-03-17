@@ -20,7 +20,7 @@ export default function ReportsPage() {
     if (!report || !report.events) return;
     const { events } = report;
     const headers = ['Description,Date,Proceeds (USD),Cost Basis (USD),Gain/Loss (USD),Term'];
-    const rows = events.map((e: TaxEvent) => 
+    const rows = events.map((e: any) => 
       `${e.amountSold} ${e.asset},${new Date(e.timestamp).toLocaleDateString()},${e.proceeds.toFixed(2)},${e.costBasis.toFixed(2)},${e.gainLoss.toFixed(2)},${e.term}`
     );
     const csvContent = "data:text/csv;charset=utf-8," + headers.concat(rows).join("\n");
@@ -123,7 +123,7 @@ export default function ReportsPage() {
                   <tr>
                     <td colSpan={6} className="text-center py-8 text-slate-500 font-medium">No taxable events found for {year}.</td>
                   </tr>
-                ) : events.map((event: TaxEvent, i: number) => (
+                ) : events.map((event: any, i: number) => (
                   <tr key={i} className="hover:bg-white/5 transition-colors group">
                     <td className="py-4 px-4">
                       <div className="font-medium text-white">{formatNumber(event.amountSold)} {event.asset}</div>
