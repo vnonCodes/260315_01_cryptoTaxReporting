@@ -1,0 +1,110 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - complementary [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: τ
+      - generic [ref=e5]: KryptoTax
+    - navigation [ref=e6]:
+      - link "Dashboard" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8]:
+          - img [ref=e10]
+          - generic [ref=e15]: Dashboard
+      - link "Portfolio" [ref=e16] [cursor=pointer]:
+        - /url: /portfolio
+        - generic [ref=e17]:
+          - img [ref=e18]
+          - generic [ref=e21]: Portfolio
+      - link "Transactions" [ref=e22] [cursor=pointer]:
+        - /url: /transactions
+        - generic [ref=e23]:
+          - img [ref=e24]
+          - generic [ref=e27]: Transactions
+      - link "Tax Reports" [ref=e28] [cursor=pointer]:
+        - /url: /reports
+        - generic [ref=e29]:
+          - img [ref=e30]
+          - generic [ref=e33]: Tax Reports
+      - link "Integrations" [ref=e34] [cursor=pointer]:
+        - /url: /integrations
+        - generic [ref=e35]:
+          - img [ref=e36]
+          - generic [ref=e39]: Integrations
+      - link "Settings" [ref=e40] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=e41]:
+          - img [ref=e42]
+          - generic [ref=e45]: Settings
+    - generic [ref=e47]:
+      - paragraph [ref=e48]: Sync Status
+      - generic [ref=e49]: All APIs connected
+  - generic [ref=e51]:
+    - banner [ref=e52]:
+      - generic [ref=e53]:
+        - generic [ref=e54] [cursor=pointer]:
+          - img [ref=e55]
+          - generic [ref=e58]:
+            - generic [ref=e59]: Search transactions, assets...
+            - generic:
+              - generic: ⌘
+              - text: K
+        - generic [ref=e63]:
+          - generic [ref=e65]:
+            - img [ref=e66]
+            - combobox [expanded] [ref=e69]
+            - button "ESC" [ref=e70] [cursor=pointer]
+          - listbox "Suggestions" [ref=e71]:
+            - generic [ref=e72]:
+              - generic [ref=e73]: Navigation
+              - group "Navigation" [ref=e74]:
+                - option "Dashboard" [selected] [ref=e75] [cursor=pointer]:
+                  - img [ref=e77]
+                  - text: Dashboard
+                - option "Portfolio" [ref=e82] [cursor=pointer]:
+                  - img [ref=e84]
+                  - text: Portfolio
+                - option "Transactions" [ref=e87] [cursor=pointer]:
+                  - img [ref=e89]
+                  - text: Transactions
+                - option "Tax Reports" [ref=e92] [cursor=pointer]:
+                  - img [ref=e94]
+                  - text: Tax Reports
+              - generic [ref=e97]: Assets
+              - group "Assets" [ref=e98]:
+                - option "₿ Bitcoin (BTC)" [ref=e99] [cursor=pointer]:
+                  - generic [ref=e101]: ₿
+                  - text: Bitcoin (BTC)
+                - option "Ξ Ethereum (ETH)" [ref=e102] [cursor=pointer]:
+                  - generic [ref=e104]: Ξ
+                  - text: Ethereum (ETH)
+                - option "S Solana (SOL)" [ref=e105] [cursor=pointer]:
+                  - generic [ref=e107]: S
+                  - text: Solana (SOL)
+              - generic [ref=e108]: Settings
+              - group "Settings" [ref=e109]:
+                - option "Settings" [ref=e110] [cursor=pointer]:
+                  - img [ref=e112]
+                  - text: Settings
+          - generic [ref=e115]:
+            - generic [ref=e116]:
+              - generic [ref=e117]:
+                - generic [ref=e118]: ↵
+                - text: Select
+              - generic [ref=e119]:
+                - generic [ref=e120]: ↑↓
+                - text: Navigate
+            - generic [ref=e121]: KryptoTax CMD Palette
+      - generic [ref=e122]:
+        - generic [ref=e123]: "Last synced: Just now"
+        - button [ref=e125] [cursor=pointer]:
+          - img [ref=e126]
+        - generic [ref=e130] [cursor=pointer]:
+          - img [ref=e132]
+          - generic [ref=e135]:
+            - paragraph [ref=e136]: Tax Pro User
+            - paragraph [ref=e137]: Free Tier
+    - main [ref=e138]
+  - alert [ref=e142]
+```

@@ -97,6 +97,7 @@ export default function IntegrationsPage() {
                 {integration.status === 'disconnected' && (
                   <button 
                     onClick={() => setIsApiModalOpen(true)}
+                    data-testid={`connect-${integration.id}`}
                     className="w-full mt-4 flex items-center justify-center gap-2 border border-slate-700 bg-slate-800 hover:bg-slate-700 hover:border-slate-600 text-slate-300 py-2 rounded-lg text-sm transition-all shadow-md active:scale-[0.98]"
                   >
                     <Key className="w-4 h-4" /> Connect API
@@ -106,6 +107,7 @@ export default function IntegrationsPage() {
                   <button 
                     onClick={() => handleSync(integration.id)}
                     disabled={syncingId !== null}
+                    data-testid={`sync-${integration.id}`}
                     className="w-full mt-4 flex items-center justify-center gap-2 border border-slate-800 bg-slate-900/50 hover:bg-slate-800 hover:border-slate-700 text-slate-400 hover:text-white py-2 rounded-lg text-sm transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <RotateCw className={cn("w-4 h-4", syncingId === integration.id && "animate-spin")} /> {syncingId === integration.id ? 'Syncing...' : 'Sync Now'}

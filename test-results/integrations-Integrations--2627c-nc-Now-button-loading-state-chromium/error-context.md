@@ -1,0 +1,162 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - complementary [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: τ
+      - generic [ref=e5]: KryptoTax
+    - navigation [ref=e6]:
+      - link "Dashboard" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8]:
+          - img [ref=e9]
+          - generic [ref=e14]: Dashboard
+      - link "Portfolio" [ref=e15] [cursor=pointer]:
+        - /url: /portfolio
+        - generic [ref=e16]:
+          - img [ref=e17]
+          - generic [ref=e20]: Portfolio
+      - link "Transactions" [ref=e21] [cursor=pointer]:
+        - /url: /transactions
+        - generic [ref=e22]:
+          - img [ref=e23]
+          - generic [ref=e26]: Transactions
+      - link "Tax Reports" [ref=e27] [cursor=pointer]:
+        - /url: /reports
+        - generic [ref=e28]:
+          - img [ref=e29]
+          - generic [ref=e32]: Tax Reports
+      - link "Integrations" [ref=e33] [cursor=pointer]:
+        - /url: /integrations
+        - generic [ref=e34]:
+          - img [ref=e36]
+          - generic [ref=e39]: Integrations
+      - link "Settings" [ref=e40] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=e41]:
+          - img [ref=e42]
+          - generic [ref=e45]: Settings
+    - generic [ref=e47]:
+      - paragraph [ref=e48]: Sync Status
+      - generic [ref=e49]: All APIs connected
+  - generic [ref=e51]:
+    - banner [ref=e52]:
+      - generic [ref=e54] [cursor=pointer]:
+        - img [ref=e55]
+        - generic [ref=e58]:
+          - generic [ref=e59]: Search transactions, assets...
+          - generic:
+            - generic: ⌘
+            - text: K
+      - generic [ref=e60]:
+        - generic [ref=e61]: "Last synced: Just now"
+        - button [ref=e63] [cursor=pointer]:
+          - img [ref=e64]
+        - generic [ref=e68] [cursor=pointer]:
+          - img [ref=e70]
+          - generic [ref=e73]:
+            - paragraph [ref=e74]: Tax Pro User
+            - paragraph [ref=e75]: Free Tier
+    - main [ref=e76]:
+      - generic [ref=e78]:
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - heading "Integrations" [level=1] [ref=e81]
+            - paragraph [ref=e82]: Connect exchanges, wallets, and DeFi protocols.
+          - button "Add Integration" [ref=e83] [cursor=pointer]:
+            - img [ref=e84]
+            - text: Add Integration
+        - generic [ref=e85]:
+          - generic [ref=e87]:
+            - generic [ref=e90]:
+              - generic [ref=e91]:
+                - heading "Coinbase" [level=3] [ref=e92]
+                - paragraph [ref=e93]: Exchange
+              - generic [ref=e95]:
+                - img [ref=e96]
+                - text: Connected
+            - generic [ref=e99]:
+              - generic [ref=e100]:
+                - generic [ref=e101]: Last synced
+                - generic [ref=e102]: 10 mins ago
+              - button "Sync Now" [ref=e103] [cursor=pointer]:
+                - img [ref=e104]
+                - text: Sync Now
+          - generic [ref=e108]:
+            - generic [ref=e111]:
+              - generic [ref=e112]:
+                - heading "Binance" [level=3] [ref=e113]
+                - paragraph [ref=e114]: Exchange
+              - generic [ref=e116]:
+                - img [ref=e117]
+                - text: Connected
+            - generic [ref=e120]:
+              - generic [ref=e121]:
+                - generic [ref=e122]: Last synced
+                - generic [ref=e123]: 1 hour ago
+              - button "Sync Now" [ref=e124] [cursor=pointer]:
+                - img [ref=e125]
+                - text: Sync Now
+          - generic [ref=e129]:
+            - generic [ref=e132]:
+              - generic [ref=e133]:
+                - heading "MetaMask" [level=3] [ref=e134]
+                - paragraph [ref=e135]: Wallet
+              - generic [ref=e137]:
+                - img [ref=e138]
+                - text: Connected
+            - generic [ref=e141]:
+              - generic [ref=e142]:
+                - generic [ref=e143]: Last synced
+                - generic [ref=e144]: Just now
+              - button "Sync Now" [ref=e145] [cursor=pointer]:
+                - img [ref=e146]
+                - text: Sync Now
+          - generic [ref=e150]:
+            - generic [ref=e153]:
+              - generic [ref=e154]:
+                - heading "Phantom" [level=3] [ref=e155]
+                - paragraph [ref=e156]: Wallet
+              - generic [ref=e158]:
+                - img [ref=e159]
+                - text: Syncing
+            - generic [ref=e162]:
+              - generic [ref=e163]:
+                - generic [ref=e164]: Last synced
+                - generic [ref=e165]: "-"
+              - button "Sync Now" [ref=e166] [cursor=pointer]:
+                - img [ref=e167]
+                - text: Sync Now
+          - generic [ref=e171]:
+            - generic [ref=e174]:
+              - generic [ref=e175]:
+                - heading "Kraken" [level=3] [ref=e176]
+                - paragraph [ref=e177]: Exchange
+              - generic [ref=e179]: Disconnected
+            - generic [ref=e180]:
+              - generic [ref=e181]:
+                - generic [ref=e182]: Last synced
+                - generic [ref=e183]: "-"
+              - button "Connect API" [ref=e184] [cursor=pointer]:
+                - img [ref=e185]
+                - text: Connect API
+          - generic [ref=e190]:
+            - generic [ref=e193]:
+              - generic [ref=e194]:
+                - heading "Uniswap" [level=3] [ref=e195]
+                - paragraph [ref=e196]: DeFi Protocol
+              - generic [ref=e198]: Auto-detected
+            - generic [ref=e199]:
+              - generic [ref=e200]:
+                - generic [ref=e201]: Last synced
+                - generic [ref=e202]: Just now
+              - button "Sync Now" [ref=e203] [cursor=pointer]:
+                - img [ref=e204]
+                - text: Sync Now
+          - button "Add New Wallet Support for 100+ blockchains and exchanges." [ref=e208] [cursor=pointer]:
+            - img [ref=e210]
+            - generic [ref=e211]: Add New Wallet
+            - generic [ref=e212]: Support for 100+ blockchains and exchanges.
+  - alert [ref=e213]
+```

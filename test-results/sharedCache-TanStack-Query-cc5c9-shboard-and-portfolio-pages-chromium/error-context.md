@@ -1,0 +1,179 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - complementary [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: τ
+      - generic [ref=e5]: KryptoTax
+    - navigation [ref=e6]:
+      - link "Dashboard" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8]:
+          - img [ref=e9]
+          - generic [ref=e14]: Dashboard
+      - link "Portfolio" [active] [ref=e15] [cursor=pointer]:
+        - /url: /portfolio
+        - generic [ref=e16]:
+          - img [ref=e18]
+          - generic [ref=e21]: Portfolio
+      - link "Transactions" [ref=e22] [cursor=pointer]:
+        - /url: /transactions
+        - generic [ref=e23]:
+          - img [ref=e24]
+          - generic [ref=e27]: Transactions
+      - link "Tax Reports" [ref=e28] [cursor=pointer]:
+        - /url: /reports
+        - generic [ref=e29]:
+          - img [ref=e30]
+          - generic [ref=e33]: Tax Reports
+      - link "Integrations" [ref=e34] [cursor=pointer]:
+        - /url: /integrations
+        - generic [ref=e35]:
+          - img [ref=e36]
+          - generic [ref=e39]: Integrations
+      - link "Settings" [ref=e40] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=e41]:
+          - img [ref=e42]
+          - generic [ref=e45]: Settings
+    - generic [ref=e47]:
+      - paragraph [ref=e48]: Sync Status
+      - generic [ref=e49]: All APIs connected
+  - generic [ref=e51]:
+    - banner [ref=e52]:
+      - generic [ref=e54] [cursor=pointer]:
+        - img [ref=e55]
+        - generic [ref=e58]:
+          - generic [ref=e59]: Search transactions, assets...
+          - generic:
+            - generic: ⌘
+            - text: K
+      - generic [ref=e60]:
+        - generic [ref=e61]: "Last synced: Just now"
+        - button [ref=e63] [cursor=pointer]:
+          - img [ref=e64]
+        - generic [ref=e68] [cursor=pointer]:
+          - img [ref=e70]
+          - generic [ref=e73]:
+            - paragraph [ref=e74]: Tax Pro User
+            - paragraph [ref=e75]: Free Tier
+    - main [ref=e76]:
+      - generic [ref=e78]:
+        - generic [ref=e80]:
+          - heading "Portfolio" [level=1] [ref=e81]
+          - paragraph [ref=e82]: Detailed breakdown of your holdings across all connected wallets and exchanges.
+        - generic [ref=e83]:
+          - generic [ref=e84]:
+            - heading "Asset Allocation" [level=3] [ref=e85]
+            - paragraph [ref=e86]: Your multi-chain digital assets and cost basis
+          - table [ref=e89]:
+            - rowgroup [ref=e90]:
+              - row "Asset Quantity Price Avg. Cost Basis Total Value Unrealized P&L" [ref=e91]:
+                - columnheader "Asset" [ref=e92]
+                - columnheader "Quantity" [ref=e93]
+                - columnheader "Price" [ref=e94]
+                - columnheader "Avg. Cost Basis" [ref=e95]
+                - columnheader "Total Value" [ref=e96]
+                - columnheader "Unrealized P&L" [ref=e97]
+            - rowgroup [ref=e98]:
+              - row "B Bitcoin Bitcoin 1 BTC $64,776.83 +2.81% $40,000.00 $64,776.83 +$24,776.83" [ref=e99] [cursor=pointer]:
+                - cell "B Bitcoin Bitcoin" [ref=e100]:
+                  - generic [ref=e101]:
+                    - generic [ref=e102]: B
+                    - generic [ref=e103]:
+                      - generic [ref=e104]: Bitcoin
+                      - generic [ref=e105]: Bitcoin
+                - cell "1 BTC" [ref=e106]
+                - cell "$64,776.83 +2.81%" [ref=e107]:
+                  - text: $64,776.83
+                  - generic [ref=e108]: +2.81%
+                - cell "$40,000.00" [ref=e109]
+                - cell "$64,776.83" [ref=e110]
+                - cell "+$24,776.83" [ref=e111]
+              - row "E Ethereum Ethereum 6 ETH $3,386.06 +1.11% $2,500.00 $20,316.38 +$5,316.38" [ref=e112] [cursor=pointer]:
+                - cell "E Ethereum Ethereum" [ref=e113]:
+                  - generic [ref=e114]:
+                    - generic [ref=e115]: E
+                    - generic [ref=e116]:
+                      - generic [ref=e117]: Ethereum
+                      - generic [ref=e118]: Ethereum
+                - cell "6 ETH" [ref=e119]
+                - cell "$3,386.06 +1.11%" [ref=e120]:
+                  - text: $3,386.06
+                  - generic [ref=e121]: +1.11%
+                - cell "$2,500.00" [ref=e122]
+                - cell "$20,316.38" [ref=e123]
+                - cell "+$5,316.38" [ref=e124]
+              - row "S Solana Solana 120 SOL $145.68 +3.02% $80.00 $17,481.10 +$7,881.10" [ref=e125] [cursor=pointer]:
+                - cell "S Solana Solana" [ref=e126]:
+                  - generic [ref=e127]:
+                    - generic [ref=e128]: S
+                    - generic [ref=e129]:
+                      - generic [ref=e130]: Solana
+                      - generic [ref=e131]: Solana
+                - cell "120 SOL" [ref=e132]
+                - cell "$145.68 +3.02%" [ref=e133]:
+                  - text: $145.68
+                  - generic [ref=e134]: +3.02%
+                - cell "$80.00" [ref=e135]
+                - cell "$17,481.10" [ref=e136]
+                - cell "+$7,881.10" [ref=e137]
+              - row "A Arbitrum Arbitrum 0 ARB $1.20 +2.12% $0.00 $0.00 $0.00" [ref=e138] [cursor=pointer]:
+                - cell "A Arbitrum Arbitrum" [ref=e139]:
+                  - generic [ref=e140]:
+                    - generic [ref=e141]: A
+                    - generic [ref=e142]:
+                      - generic [ref=e143]: Arbitrum
+                      - generic [ref=e144]: Arbitrum
+                - cell "0 ARB" [ref=e145]
+                - cell "$1.20 +2.12%" [ref=e146]:
+                  - text: $1.20
+                  - generic [ref=e147]: +2.12%
+                - cell "$0.00" [ref=e148]
+                - cell "$0.00" [ref=e149]
+                - cell "$0.00" [ref=e150]
+              - row "U Uniswap Ethereum 1,000 UNI $11.04 -4.61% $8.00 $11,044.99 +$3,044.99" [ref=e151] [cursor=pointer]:
+                - cell "U Uniswap Ethereum" [ref=e152]:
+                  - generic [ref=e153]:
+                    - generic [ref=e154]: U
+                    - generic [ref=e155]:
+                      - generic [ref=e156]: Uniswap
+                      - generic [ref=e157]: Ethereum
+                - cell "1,000 UNI" [ref=e158]
+                - cell "$11.04 -4.61%" [ref=e159]:
+                  - text: $11.04
+                  - generic [ref=e160]: "-4.61%"
+                - cell "$8.00" [ref=e161]
+                - cell "$11,044.99" [ref=e162]
+                - cell "+$3,044.99" [ref=e163]
+              - row "A Avalanche Avalanche 200 AVAX $41.79 +2.20% $35.00 $8,358.57 +$1,358.57" [ref=e164] [cursor=pointer]:
+                - cell "A Avalanche Avalanche" [ref=e165]:
+                  - generic [ref=e166]:
+                    - generic [ref=e167]: A
+                    - generic [ref=e168]:
+                      - generic [ref=e169]: Avalanche
+                      - generic [ref=e170]: Avalanche
+                - cell "200 AVAX" [ref=e171]
+                - cell "$41.79 +2.20%" [ref=e172]:
+                  - text: $41.79
+                  - generic [ref=e173]: +2.20%
+                - cell "$35.00" [ref=e174]
+                - cell "$8,358.57" [ref=e175]
+                - cell "+$1,358.57" [ref=e176]
+              - row "B BNB BNB Chain 15 BNB $582.81 +2.81% $450.00 $8,742.18 +$1,992.18" [ref=e177] [cursor=pointer]:
+                - cell "B BNB BNB Chain" [ref=e178]:
+                  - generic [ref=e179]:
+                    - generic [ref=e180]: B
+                    - generic [ref=e181]:
+                      - generic [ref=e182]: BNB
+                      - generic [ref=e183]: BNB Chain
+                - cell "15 BNB" [ref=e184]
+                - cell "$582.81 +2.81%" [ref=e185]:
+                  - text: $582.81
+                  - generic [ref=e186]: +2.81%
+                - cell "$450.00" [ref=e187]
+                - cell "$8,742.18" [ref=e188]
+                - cell "+$1,992.18" [ref=e189]
+  - alert [ref=e190]
+```
