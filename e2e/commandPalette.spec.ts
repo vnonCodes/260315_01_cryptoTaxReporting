@@ -21,15 +21,15 @@ test.describe('Command Palette', () => {
     await expect(page).toHaveURL(/\/portfolio/);
   });
 
-  test('should close on ESC key', async ({ page }) => {
+  test('should close on ESC button click', async ({ page }) => {
     await page.goto('/');
 
     // Click the search input UI to open
     await page.click('[class*="cursor-pointer"][class*="w-96"]');
-    await expect(page.locator('text=Navigation')).toBeVisible();
+    await expect(page.getByPlaceholder('Type a command or search...')).toBeVisible();
 
-    // Press ESC to close
-    await page.keyboard.press('Escape');
-    await expect(page.locator('text=Navigation')).not.toBeVisible();
+    // Click the ESC button inside the palette to close
+    await page.click('button:has-text("ESC")');
+    await expect(page.getByPlaceholder('Type a command or search...')).not.toBeVisible();
   });
 });

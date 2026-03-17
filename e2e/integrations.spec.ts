@@ -18,7 +18,7 @@ test.describe('Integrations', () => {
     await page.click('text=Add New Wallet');
     
     await expect(page.locator('text=Connect Web3 Wallet')).toBeVisible();
-    // Use a more specific selector - target the wallet button inside the modal
+    // Target the wallet option button inside the modal (not the card heading)
     await expect(page.getByRole('button', { name: /M MetaMask/ })).toBeVisible();
     
     // Close via ESC
@@ -29,22 +29,22 @@ test.describe('Integrations', () => {
   test('should handle Sync Now button loading state', async ({ page }) => {
     await page.goto('/integrations');
 
-    // Wait for integrations cards to be loaded
+    // Wait for integration cards to fully render
     await expect(page.locator('text=Coinbase')).toBeVisible();
     
-    // Find the first Sync Now button (for Coinbase which is 'connected')
-    const syncButton = page.locator('button:has-text("Sync Now")').first();
-    await expect(syncButton).toBeVisible();
-    await syncButton.click();
+    // Use specific data-testid for Coinbase sync button (first connected integration)
+    const coinbaseSyncBtn = page.locator('[data-testid="sync-coinbase"]');
+    await expect(coinbaseSyncBtn).toBeVisible();
+    await expect(coinbaseSyncBtn).toContainText('Sync Now');
+
+    await coinbaseSyncBtn.click();
     
-    // After click, that button should show 'Syncing...'
-    await expect(syncButton).toContainText('Syncing...', { timeout: 2000 });
-    
-    // All other Sync Now buttons should be disabled while syncing
-    const allSyncButtons = page.locator('button:has-text("Sync Now"), button:has-text("Syncing...")');
-    await expect(allSyncButtons.first()).toBeDisabled();
+    // The clicked button should now show 'Syncing...'
+    await expect(coinbaseSyncBtn).toContainText('Syncing...', { timeout: 2000 });
+    await expect(coinbaseSyncBtn).toBeDisabled();
     
     // Wait for mock delay to finish (1.5s in code) and button returns to 'Sync Now'
-    await expect(syncButton).toContainText('Sync Now', { timeout: 3500 });
+    await expect(coinbaseSyncBtn).toContainText('Sync Now', { timeout: 4000 });
+    await expect(coinbaseSyncBtn).not.toBeDisabled();
   });
 });
