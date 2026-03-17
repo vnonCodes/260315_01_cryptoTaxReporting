@@ -3,7 +3,6 @@
 import * as React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Zap, ArrowRight, Database, Globe, Layers } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
 interface LiveFeedPanelProps {
   isOpen: boolean;

@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/Badge';
 import { motion } from 'framer-motion';
 import { Wallet, Activity, ArrowUpRight, ArrowDownRight, TrendingUp } from 'lucide-react';
 import { formatCurrency, formatNumber } from '@/lib/utils';
-import { Asset, Transaction } from '@/types';
+import { Transaction } from '@/types';
 import { useQuery } from '@tanstack/react-query';
 import { LiveFeedPanel } from '@/components/LiveFeedPanel';
 import { useState } from 'react';
@@ -154,7 +154,7 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4 mt-2">
-              {recentTxs.map((tx: any) => (
+              {recentTxs.map((tx: Transaction) => (
                 <div key={tx.id} className="text-sm flex gap-3 pb-3 border-b border-white/5 last:border-0 border-transparent hover:bg-white/5 p-1 rounded-lg transition-all">
                   <div className="mt-0.5 shrink-0">
                     {tx.type === 'buy' || tx.type === 'receive' || tx.type === 'airdrop' ? (
